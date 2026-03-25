@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加密流量分析系统 - Transformer长度预测</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>IPSec ESP加密流量长度预测系统</h1>
+        <div class="description">
+            <p><i class="fas fa-info-circle"></i> 本系统基于Transformer深度学习模型，能够智能分析加密网络流量，目前开发功能可以预测IPSec ESP加密报文解密后的明文协议头长度和加密填充长度，进一步可以根据IPSec ESP报文结构计算出明文协议体长度等其他长度信息，用于分析协议头与协议体的特征关系。上传PCAP抓包文件后，系统将自动完成特征提取和长度预测。</p>
+        </div>
+
+        <div class="upload-area" id="dropArea">
+            <input type="file" id="fileInput" accept=".pcap" style="display: none;">
+            <div class="upload-box">
+                <p><i class="fas fa-cloud-upload-alt fa-2x" style="color: #4361ee; margin-bottom: 15px;"></i></p>
+                <p>拖拽PCAP文件到此处或</p>
+                <button id="uploadBtn">
+                    <i class="fas fa-folder-open"></i> 选择文件
+                </button>
+                <p style="font-size: 0.9rem; color: #888; margin-top: 15px;">
+                    支持标准PCAP格式文件
+                </p>
+            </div>
+        </div>
+
+        <div id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p style="font-size: 1.1rem; color: #555;">正在分析网络流量，请稍候...</p>
+            <div style="margin-top: 1rem; color: #666;">
+                <i class="fas fa-cog fa-spin"></i> 状态: <span id="statusText">初始化模型...</span>
+            </div>
+        </div>
+
+        <div id="results" style="display: none;">
+            <h2><i class="fas fa-chart-bar"></i> 分析结果</h2>
+
+            <div class="result-section">
+                <h3>
+                    <i class="fas fa-table"></i> 提取的特征数据
+                    <a id="downloadFeatures" href="#" class="download-btn">
+                        <i class="fas fa-download"></i> 下载CSV
+                    </a>
+                </h3>
+                <div style="margin-bottom: 10px; color: #666;">
+                    <i class="fas fa-info-circle"></i> 包含SPI、序列号、加密长度等关键特征
+                </div>
+                <pre id="featuresContent"></pre>
+            </div>
+
+            <div class="result-section">
+                <h3>
+                    <i class="fas fa-project-diagram"></i> 长度预测结果
+                    <a id="downloadPredictions" href="#" class="download-btn">
+                        <i class="fas fa-download"></i> 下载CSV
+                    </a>
+                </h3>
+                <div style="margin-bottom: 10px; color: #666;">
+                    <i class="fas fa-info-circle"></i> 预测结果包含明文头部长度和填充长度
+                </div>
+                <pre id="predictionsContent"></pre>
+            </div>
+        </div>
+
+        <div id="error" style="display: none;" class="error-box">
+            <i class="fas fa-exclamation-triangle"></i> <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

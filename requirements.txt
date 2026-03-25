@@ -1,0 +1,47 @@
+﻿# IPSecVPN Traffic Classification Project
+# Python Package Requirements
+# 
+# Installation: pip install -r requirements.txt
+# For faster installation in China: pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# ==================== Core Dependencies ====================
+# Deep Learning Framework
+tensorflow>=2.10.0              # Deep learning framework with Keras
+keras>=2.10.0                   # Deep learning API
+
+# Numerical Computing & Data Processing
+numpy>=1.21.0                   # Array computation library
+pandas>=1.3.0                   # Data table processing
+scipy>=1.7.0                    # Scientific computing toolkit
+
+# Machine Learning Tools
+scikit-learn>=1.0.0             # Machine learning algorithms
+
+# ==================== Network Protocol Processing ====================
+scapy>=2.4.5                    # PCAP file parsing and network packet manipulation
+dpkt>=1.9.7                     # Alternative network packet parsing library (optional)
+
+# ==================== Web Framework ====================
+Flask>=2.2.0                    # Web application framework
+werkzeug>=2.2.0                 # WSGI utility library
+Jinja2>=3.1.0                   # Template engine
+
+# ==================== Data Visualization ====================
+matplotlib>=3.5.0               # 2D plotting library
+seaborn>=0.12.0                 # Statistical data visualization
+
+# ==================== Security & Encryption ====================
+cryptography>=38.0.0            # Cryptography library (optional)
+
+# ==================== Utilities ====================
+tqdm>=4.62.0                    # Progress bar display
+PyYAML>=6.0                     # YAML parser
+
+# ==================== Development Tools (Optional) ====================
+# Uncomment these for development
+# pytest>=7.0.0                 # Testing framework
+# pytest-cov>=3.0.0             # Coverage reports
+# black>=22.0.0                 # Code formatter
+# flake8>=4.0.0                 # Style checker
+# isort>=5.10.0                 # Import sorter
+# ipython>=8.0.0                # Interactive shell
